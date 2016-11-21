@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum BulletType {
+enum BulletType : String {
     case Task, Information, Event
 }

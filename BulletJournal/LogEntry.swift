@@ -17,10 +17,8 @@ class LogEntry: NSObject, NSCoding {
     }
     
     var note : String
-//    var bulletType : BulletType
-    var bulletType : String
-//    var action : EntryAction
-    var action : String
+    var bulletType : BulletType
+    var action : EntryAction
     var isImportant : Bool
     
     // MARK:Archiving Paths
@@ -28,8 +26,7 @@ class LogEntry: NSObject, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("logEntries")
 
     
-//    init(note : String, bulletType : BulletType = .Task, action : EntryAction = .InProgress, isImportant : Bool = false) {
-    init(note : String, bulletType : String = "", action : String = "", isImportant : Bool = false) {
+    init(note : String, bulletType : BulletType = .Task, action : EntryAction = .InProgress, isImportant : Bool = false) {
         self.note = note
         self.bulletType = bulletType
         self.action = action
@@ -40,19 +37,17 @@ class LogEntry: NSObject, NSCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(note, forKey: LogEntryKey.descKey)
-        aCoder.encode(bulletType, forKey: LogEntryKey.bulletTypeKey)
-        aCoder.encode(action, forKey: LogEntryKey.actionKey)
+        aCoder.encode(bulletType.rawValue, forKey: LogEntryKey.bulletTypeKey)
+        aCoder.encode(action.rawValue, forKey: LogEntryKey.actionKey)
         aCoder.encode(isImportant, forKey: LogEntryKey.isImportantKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         let note = aDecoder.decodeObject(forKey: LogEntryKey.descKey) as! String
-//        let bulletType = aDecoder.decodeObject(forKey: LogEntryKey.bulletTypeKey) as! BulletType
-        let bulletType = aDecoder.decodeObject(forKey: LogEntryKey.bulletTypeKey) as! String
-//        let action = aDecoder.decodeObject(forKey: LogEntryKey.actionKey) as! EntryAction
-        let action = aDecoder.decodeObject(forKey: LogEntryKey.actionKey) as! String
+        let bulletType = BulletType(rawValue: aDecoder.decodeObject(forKey: LogEntryKey.bulletTypeKey) as! String)
+        let action = EntryAction(rawValue: aDecoder.decodeObject(forKey: LogEntryKey.actionKey) as! String)
         let isImportant = aDecoder.decodeBool(forKey: LogEntryKey.isImportantKey)
-        
-        self.init(note: note, bulletType: bulletType, action: action, isImportant: isImportant)
+
+        self.init(note: note, bulletType: bulletType!, action: action!, isImportant: isImportant)
     }
 }

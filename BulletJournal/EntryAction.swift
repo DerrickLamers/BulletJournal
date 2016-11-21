@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum EntryAction {
+enum EntryAction : String {
     case InProgress, Done, NextMonth, Future
 }
