@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B049CF681DE2D506007204E3 /* LogEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B049CF671DE2D506007204E3 /* LogEntryCell.swift */; };
+		B049CF6A1DE2D5B9007204E3 /* RapidLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B049CF691DE2D5B9007204E3 /* RapidLogViewController.swift */; };
 		B09D69F31DE28AD3007A0B2F /* EntryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09D69F21DE28AD3007A0B2F /* EntryAction.swift */; };
 		B09D69F51DE28AF4007A0B2F /* BulletType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09D69F41DE28AF4007A0B2F /* BulletType.swift */; };
 		B09D69F71DE28B5A007A0B2F /* LogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09D69F61DE28B5A007A0B2F /* LogEntry.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B049CF671DE2D506007204E3 /* LogEntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryCell.swift; sourceTree = "<group>"; };
+		B049CF691DE2D5B9007204E3 /* RapidLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RapidLogViewController.swift; sourceTree = "<group>"; };
 		B09D69F21DE28AD3007A0B2F /* EntryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryAction.swift; sourceTree = "<group>"; };
 		B09D69F41DE28AF4007A0B2F /* BulletType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BulletType.swift; path = ../BulletType.swift; sourceTree = "<group>"; };
 		B09D69F61DE28B5A007A0B2F /* LogEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntry.swift; sourceTree = "<group>"; };
@@ -86,6 +90,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B049CF661DE2D3B3007204E3 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tables;
+			sourceTree = "<group>";
+		};
 		B09D69EF1DE28A39007A0B2F /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,13 +133,16 @@
 		B0A351AB1DE282090050EC77 /* BulletJournal */ = {
 			isa = PBXGroup;
 			children = (
-				B09D69EF1DE28A39007A0B2F /* DataModels */,
 				B0A351AC1DE282090050EC77 /* AppDelegate.swift */,
-				B0A351AE1DE282090050EC77 /* ViewController.swift */,
+				B09D69EF1DE28A39007A0B2F /* DataModels */,
+				B049CF661DE2D3B3007204E3 /* Tables */,
+				B0A351B81DE2820A0050EC77 /* Info.plist */,
 				B0A351B01DE2820A0050EC77 /* Main.storyboard */,
+				B049CF671DE2D506007204E3 /* LogEntryCell.swift */,
+				B0A351AE1DE282090050EC77 /* ViewController.swift */,
+				B049CF691DE2D5B9007204E3 /* RapidLogViewController.swift */,
 				B0A351B31DE2820A0050EC77 /* Assets.xcassets */,
 				B0A351B51DE2820A0050EC77 /* LaunchScreen.storyboard */,
-				B0A351B81DE2820A0050EC77 /* Info.plist */,
 			);
 			path = BulletJournal;
 			sourceTree = "<group>";
@@ -290,8 +304,10 @@
 			files = (
 				B09D69F31DE28AD3007A0B2F /* EntryAction.swift in Sources */,
 				B09D69FB1DE29171007A0B2F /* MonthDayLog.swift in Sources */,
+				B049CF6A1DE2D5B9007204E3 /* RapidLogViewController.swift in Sources */,
 				B09D69F51DE28AF4007A0B2F /* BulletType.swift in Sources */,
 				B09D69FD1DE292CA007A0B2F /* MonthOverview.swift in Sources */,
+				B049CF681DE2D506007204E3 /* LogEntryCell.swift in Sources */,
 				B09D69F71DE28B5A007A0B2F /* LogEntry.swift in Sources */,
 				B0A351AF1DE282090050EC77 /* ViewController.swift in Sources */,
 				B09D69F91DE290D2007A0B2F /* RapidLogDay.swift in Sources */,
