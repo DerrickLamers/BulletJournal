@@ -47,30 +47,32 @@
                                             <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be5-y0-zmO">
-                                                    <frame key="frameInset" minX="51" minY="11" width="273" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Wy-zZ-Ih5">
-                                                    <frame key="frameInset" minX="8" minY="4" width="35" height="35"/>
+                                                    <frame key="frameInset" minX="8" minY="15" width="15" height="15"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uQk-kn-iV1">
                                                     <frame key="frameInset" minX="332" minY="4" width="35" height="35"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be5-y0-zmO">
+                                                    <frame key="frameInset" minX="31" minY="11" width="293" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="5Wy-zZ-Ih5" firstAttribute="centerY" secondItem="QFw-2I-1Qj" secondAttribute="centerY" id="05r-ra-vu6"/>
                                                 <constraint firstItem="uQk-kn-iV1" firstAttribute="centerY" secondItem="QFw-2I-1Qj" secondAttribute="centerY" id="FTD-ts-BwN"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="5Wy-zZ-Ih5" secondAttribute="leading" id="KOS-fu-Zs5"/>
-                                                <constraint firstItem="uQk-kn-iV1" firstAttribute="leading" secondItem="be5-y0-zmO" secondAttribute="trailing" constant="8" id="Vlz-mG-Q01"/>
+                                                <constraint firstItem="uQk-kn-iV1" firstAttribute="leading" secondItem="be5-y0-zmO" secondAttribute="trailing" constant="5" id="Vlz-mG-Q01"/>
                                                 <constraint firstItem="be5-y0-zmO" firstAttribute="centerY" secondItem="QFw-2I-1Qj" secondAttribute="centerY" id="nvQ-ip-SzO"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="uQk-kn-iV1" secondAttribute="trailing" id="ubU-4I-nrp"/>
-                                                <constraint firstItem="be5-y0-zmO" firstAttribute="leading" secondItem="5Wy-zZ-Ih5" secondAttribute="trailing" constant="8" id="wJY-ek-SDZ"/>
+                                                <constraint firstItem="be5-y0-zmO" firstAttribute="leading" secondItem="5Wy-zZ-Ih5" secondAttribute="trailing" constant="5" id="wJY-ek-SDZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bulletImage" destination="5Wy-zZ-Ih5" id="u9p-Bz-4VG"/>
+                                            <outlet property="isImportantImage" destination="uQk-kn-iV1" id="Drv-hE-eSH"/>
                                             <outlet property="noteLable" destination="be5-y0-zmO" id="aI7-6b-lMN"/>
                                         </connections>
                                     </tableViewCell>

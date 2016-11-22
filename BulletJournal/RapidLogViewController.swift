@@ -50,13 +50,11 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "logEntryCell", for: indexPath) as? LogEntryCell
         
         // Configure the cell...
-        let log = rapidLogs[indexPath.row]
+        let logEntry = rapidLogs[indexPath.row]
         
-        cell?.noteLable?.text = log.note
-//        cell?.highTemp?.text = day.temp_h
-//        cell?.lowTemp?.text = day.temp_l
-//        cell?.pop?.text = day.pop
-//        cell?.day?.text = day.day
+        cell?.noteLable?.text = logEntry.note
+        cell?.logEntry = logEntry
+        cell?.awakeFromNib()
         
         return cell!
     }
@@ -83,12 +81,12 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: Functionality
     
     func insertNewCell(_ sender: AnyObject) {
-        let num = rapidLogs.count + 1
-        let entry = LogEntry(note: "Note #\(num)")
+        let ndx = rapidLogs.count
+        let entry : LogEntry = LogEntry(note: "Note #\(ndx+1)")
         
         rapidLogs.append(entry)
-        tableView.reloadData()
         saveLogEntries()
+        tableView.reloadData()
     }
     
     // MARK: NSCoding
