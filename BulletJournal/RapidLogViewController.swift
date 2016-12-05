@@ -17,8 +17,11 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(ciColor: .init(color: .gray))
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(RapidLogViewController.insertNewCell(_:)))
-        self.navigationItem.rightBarButtonItem = addButton
+        // add button
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(RapidLogViewController.insertNewCell(_:)))
+//        self.navigationItem.rightBarButtonItem = addButton
+        
+        // edit button
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         // Load table
@@ -34,7 +37,6 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -42,7 +44,11 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
+    @IBAction func unwind(segue: UIStoryboardSegue) {
+        
+    }
+ 
     
     // MARK: UITableViewDelegate
     

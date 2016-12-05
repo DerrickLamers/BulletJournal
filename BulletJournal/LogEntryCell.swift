@@ -54,12 +54,12 @@ class LogEntryCell: UITableViewCell {
             print("logEntry exists in LogEntryCell")
             switch log.bulletType {
             case .Task:
-                bulletImage.image = #imageLiteral(resourceName: "TaskBullet")//.scaleImageToSize(newSize: bulletImage.frame.size)
+                bulletImage.image = #imageLiteral(resourceName: "TaskBullet").scaleImageToSize(newSize: bulletImage.frame.size)
             default:
                 bulletImage.image = #imageLiteral(resourceName: "TaskBullet").scaleImageToSize(newSize: bulletImage.frame.size)
             }
-//            bulletImage.contentMode = .scaleAspectFit
-//            bulletImage.clipsToBounds = true
+            bulletImage.contentMode = .scaleAspectFit
+            bulletImage.clipsToBounds = true
         }
         
     }

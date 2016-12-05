@@ -22,6 +22,7 @@
 		B0A351B71DE2820A0050EC77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0A351B51DE2820A0050EC77 /* LaunchScreen.storyboard */; };
 		B0A351C21DE2820A0050EC77 /* BulletJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A351C11DE2820A0050EC77 /* BulletJournalTests.swift */; };
 		B0A351CD1DE2820A0050EC77 /* BulletJournalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A351CC1DE2820A0050EC77 /* BulletJournalUITests.swift */; };
+		B0C0EAD51DF53950004686B6 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C0EAD41DF53950004686B6 /* EntryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B0A351C81DE2820A0050EC77 /* BulletJournalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BulletJournalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A351CC1DE2820A0050EC77 /* BulletJournalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletJournalUITests.swift; sourceTree = "<group>"; };
 		B0A351CE1DE2820A0050EC77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0C0EAD41DF53950004686B6 /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B014890A1DF575DC00CD7A83 /* Month */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Month;
+			sourceTree = "<group>";
+		};
 		B049CF661DE2D3B3007204E3 /* Tables */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,16 +142,18 @@
 		B0A351AB1DE282090050EC77 /* BulletJournal */ = {
 			isa = PBXGroup;
 			children = (
-				B0A351AC1DE282090050EC77 /* AppDelegate.swift */,
-				B09D69EF1DE28A39007A0B2F /* DataModels */,
-				B049CF661DE2D3B3007204E3 /* Tables */,
+				B014890A1DF575DC00CD7A83 /* Month */,
 				B0A351B81DE2820A0050EC77 /* Info.plist */,
-				B0A351B01DE2820A0050EC77 /* Main.storyboard */,
+				B0A351AC1DE282090050EC77 /* AppDelegate.swift */,
+				B0C0EAD41DF53950004686B6 /* EntryViewController.swift */,
 				B049CF671DE2D506007204E3 /* LogEntryCell.swift */,
-				B0A351AE1DE282090050EC77 /* ViewController.swift */,
 				B049CF691DE2D5B9007204E3 /* RapidLogViewController.swift */,
+				B0A351AE1DE282090050EC77 /* ViewController.swift */,
 				B0A351B31DE2820A0050EC77 /* Assets.xcassets */,
+				B09D69EF1DE28A39007A0B2F /* DataModels */,
 				B0A351B51DE2820A0050EC77 /* LaunchScreen.storyboard */,
+				B0A351B01DE2820A0050EC77 /* Main.storyboard */,
+				B049CF661DE2D3B3007204E3 /* Tables */,
 			);
 			path = BulletJournal;
 			sourceTree = "<group>";
@@ -228,7 +239,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Jonathan Molina";
 				TargetAttributes = {
 					B0A351A81DE282090050EC77 = {
@@ -308,6 +319,7 @@
 				B09D69F51DE28AF4007A0B2F /* BulletType.swift in Sources */,
 				B09D69FD1DE292CA007A0B2F /* MonthOverview.swift in Sources */,
 				B049CF681DE2D506007204E3 /* LogEntryCell.swift in Sources */,
+				B0C0EAD51DF53950004686B6 /* EntryViewController.swift in Sources */,
 				B09D69F71DE28B5A007A0B2F /* LogEntry.swift in Sources */,
 				B0A351AF1DE282090050EC77 /* ViewController.swift in Sources */,
 				B09D69F91DE290D2007A0B2F /* RapidLogDay.swift in Sources */,
@@ -384,6 +396,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -433,6 +446,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
