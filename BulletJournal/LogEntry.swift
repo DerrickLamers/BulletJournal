@@ -16,15 +16,14 @@ class LogEntry: NSObject, NSCoding {
         static let isImportantKey = "isImportant"
     }
     
+    // MARK:Archiving Paths
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("logEntries")
+    
     var note : String
     var bulletType : BulletType
     var action : EntryAction
     var isImportant : Bool
-    
-    // MARK:Archiving Paths
-    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("logEntries")
-
     
     init(note : String, bulletType : BulletType = .Task, action : EntryAction = .InProgress, isImportant : Bool = false) {
         self.note = note

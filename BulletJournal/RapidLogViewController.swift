@@ -24,7 +24,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         // Load table
-        if let tempArr = NSKeyedUnarchiver.unarchiveObject(withFile: LogEntry.ArchiveURL.path) as? [LogEntry] {
+        if let tempArr = loadLogEntries() {
             rapidLogs = tempArr
             tableView.reloadData()
         }
