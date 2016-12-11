@@ -53,6 +53,11 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "editEntrySegue" {
+            let vc = segue.destination as? EntryViewController
+            vc?.entryToEdit = rapidLogs[(tableView.indexPathForSelectedRow?.row)!]
+            vc?.entryIndex = (tableView.indexPathForSelectedRow?.row)!
+        }
     }
     
     @IBAction func unwind(segue: UIStoryboardSegue) {

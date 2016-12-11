@@ -32,10 +32,13 @@ class EntryViewController: UIViewController {
     
     var radioButtons : [(BulletType, UIButton)] = []
     var noteType : BulletType = .Task
+    var entryToEdit : LogEntry?
+    var entryIndex : Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // initialize first colors
         textView.backgroundColor = UIColor.init(hex: 0x5C6671)
         textView.layer.cornerRadius = 10
         innerView.layer.cornerRadius = 10
@@ -50,10 +53,25 @@ class EntryViewController: UIViewController {
         
         prioritySwitch.setOn(false, animated: true)
         
+        // fill in fields if editing
+        if let entry = entryToEdit {
+            textView.text = entry.note
+            prioritySwitch.setOn(entry.isImportant, animated: true)
+            switch entry.bulletType {
+            case .Task:
+                enableButton(taskButton)
+            case .Event:
+                enableButton(eventButton)
+            case .Information:
+                enableButton(infoButton)
+            }
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         UIView.animate(withDuration: 0.25) {
+            // initialize final loaded colors
             self.view.backgroundColor = UIColor.black.withAlphaComponent(.init(0.2))
             self.view.isOpaque = false
             
@@ -83,7 +101,7 @@ class EntryViewController: UIViewController {
             }
         }
     }
-    
+
     @IBAction func taskButtonAction(_ sender: Any) {
         enableButton(taskButton)
     }
@@ -97,8 +115,7 @@ class EntryViewController: UIViewController {
     }
     
     @IBAction func createAction(_ sender: Any) {
-        //TODO add new cell to table
-        self.performSegue(withIdentifier: "unwindCreateEntry", sender: nil)
+        self.performSegue(withIdentifier: "unwindDoneEntry", sender: nil)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -111,11 +128,18 @@ class EntryViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "unwindCreateEntry" {
+        if segue.identifier == "unwindDoneEntry" {
             let vc = segue.destination as? RapidLogViewController
             let logEntry = LogEntry(note: textView.text, bulletType: noteType, action: .InProgress, isImportant: prioritySwitch.isOn)
-            vc?.rapidLogs.append(logEntry)
+            if let ndx = entryIndex {
+                vc?.rapidLogs[ndx] = logEntry
+            }
+            else {
+                vc?.rapidLogs.append(logEntry)
+            }
         }
+        entryToEdit = nil
+        entryIndex = nil
     }
     
 

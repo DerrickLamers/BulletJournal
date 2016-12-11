@@ -77,6 +77,7 @@
                                             <outlet property="bulletImage" destination="5Wy-zZ-Ih5" id="u9p-Bz-4VG"/>
                                             <outlet property="isImportantImage" destination="uQk-kn-iV1" id="Drv-hE-eSH"/>
                                             <outlet property="noteLable" destination="be5-y0-zmO" id="aI7-6b-lMN"/>
+                                            <segue destination="ems-nP-zYo" kind="presentation" identifier="editEntrySegue" animates="NO" modalPresentationStyle="overCurrentContext" id="VFj-OO-iWp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -229,7 +230,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9O-iy-Lga">
                                         <rect key="frame" x="145" y="232" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Create">
+                                        <state key="normal" title="Done">
                                             <color key="titleColor" red="0.80392156859999997" green="0.81568627449999997" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -284,7 +285,7 @@
                         <outlet property="taskButton" destination="On2-1A-iiE" id="QfM-nf-PPO"/>
                         <outlet property="textView" destination="nkM-Tf-Tlo" id="JGa-gD-OcH"/>
                         <segue destination="svk-B1-fb9" kind="unwind" identifier="unwindCancelEntry" animates="NO" unwindAction="unwindWithSegue:" id="9a6-4T-C5P"/>
-                        <segue destination="svk-B1-fb9" kind="unwind" identifier="unwindCreateEntry" unwindAction="unwindWithSegue:" id="HJu-HB-sB6"/>
+                        <segue destination="svk-B1-fb9" kind="unwind" identifier="unwindDoneEntry" animates="NO" unwindAction="unwindWithSegue:" id="HJu-HB-sB6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BO9-4z-b8U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -293,4 +294,7 @@
             <point key="canvasLocation" x="77.599999999999994" y="-199.25037481259372"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="VFj-OO-iWp"/>
+    </inferredMetricsTieBreakers>
 </document>
