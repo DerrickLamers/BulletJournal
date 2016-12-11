@@ -19,10 +19,10 @@ extension UIColor {
     }
 }
 
-class EntryViewController: UIViewController, UITextFieldDelegate {
+class EntryViewController: UIViewController {
 
     @IBOutlet weak var innerView: UIView!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var taskButton: UIButton!
     @IBOutlet weak var eventButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
@@ -36,8 +36,8 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textField?.delegate = self
-        textField.layer.cornerRadius = 10
+        textView.backgroundColor = UIColor.init(hex: 0x5C6671)
+        textView.layer.cornerRadius = 10
         innerView.layer.cornerRadius = 10
 
         createButton.tintColor! = UIColor.clear
@@ -54,12 +54,14 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         UIView.animate(withDuration: 0.25) {
-            self.view.backgroundColor = UIColor(white: .init(integerLiteral: 0), alpha: .init(0.2))
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(.init(0.2))
             self.view.isOpaque = false
-            self.innerView.backgroundColor = UIColor(white: .init(integerLiteral: 1), alpha: .init(1))
+            
+//            self.innerView.backgroundColor = UIColor(white: .init(integerLiteral: 1), alpha: .init(1))
             self.innerView.isOpaque = true
-            self.createButton.tintColor! = UIColor.init(hex: 0x2680E9)
-            self.cancelButton.tintColor! = UIColor.init(hex: 0x2680E9)
+            
+//            self.createButton.tintColor! = UIColor.init(hex: 0x2680E9)
+//            self.cancelButton.tintColor! = UIColor.init(hex: 0x2680E9)
         }
     }
 
@@ -68,10 +70,6 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
     
     func enableButton(_ b1: UIButton) {
         for (type, button) in radioButtons {
@@ -115,7 +113,7 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
         if segue.identifier == "unwindCreateEntry" {
             let vc = segue.destination as? RapidLogViewController
-            let logEntry = LogEntry(note: textField.text!, bulletType: noteType, action: .InProgress, isImportant: prioritySwitch.isOn)
+            let logEntry = LogEntry(note: textView.text, bulletType: noteType, action: .InProgress, isImportant: prioritySwitch.isOn)
             vc?.rapidLogs.append(logEntry)
         }
     }

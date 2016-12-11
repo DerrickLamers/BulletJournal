@@ -28,11 +28,22 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
             rapidLogs = tempArr
             tableView.reloadData()
         }
-    } // robert 8882183631 ext 5262598
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Functionality
+    
+    func insertNewCell(_ sender: AnyObject) {
+        let ndx = rapidLogs.count
+        let entry : LogEntry = LogEntry(note: "Note #\(ndx+1)")
+        
+        rapidLogs.append(entry)
+        saveLogEntries()
+        tableView.reloadData()
     }
     
 
@@ -62,7 +73,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell?.noteLable?.text = logEntry.note
         cell?.logEntry = logEntry
-        cell?.awakeFromNib()
+        cell?.loadBulletImage()
         
         return cell!
     }
@@ -77,24 +88,21 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.setEditing(editing, animated: true)
     }
     
-    func tableView(_ tableView: UITableView,
-                   canEditRowAt indexPath: IndexPath) -> Bool{
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
         return true
     }
-    func tableView(_ tableView: UITableView,
-                   editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return tableView.isEditing ? .delete : .none
     }
     
-    // MARK: Functionality
-    
-    func insertNewCell(_ sender: AnyObject) {
-        let ndx = rapidLogs.count
-        let entry : LogEntry = LogEntry(note: "Note #\(ndx+1)")
-        
-        rapidLogs.append(entry)
-        saveLogEntries()
-        tableView.reloadData()
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            rapidLogs.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
     
     // MARK: NSCoding

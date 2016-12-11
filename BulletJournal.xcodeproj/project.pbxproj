@@ -16,7 +16,6 @@
 		B09D69FB1DE29171007A0B2F /* MonthDayLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09D69FA1DE29171007A0B2F /* MonthDayLog.swift */; };
 		B09D69FD1DE292CA007A0B2F /* MonthOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09D69FC1DE292CA007A0B2F /* MonthOverview.swift */; };
 		B0A351AD1DE282090050EC77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A351AC1DE282090050EC77 /* AppDelegate.swift */; };
-		B0A351AF1DE282090050EC77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A351AE1DE282090050EC77 /* ViewController.swift */; };
 		B0A351B21DE2820A0050EC77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0A351B01DE2820A0050EC77 /* Main.storyboard */; };
 		B0A351B41DE2820A0050EC77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0A351B31DE2820A0050EC77 /* Assets.xcassets */; };
 		B0A351B71DE2820A0050EC77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0A351B51DE2820A0050EC77 /* LaunchScreen.storyboard */; };
@@ -53,7 +52,6 @@
 		B09D69FC1DE292CA007A0B2F /* MonthOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthOverview.swift; sourceTree = "<group>"; };
 		B0A351A91DE282090050EC77 /* BulletJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BulletJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A351AC1DE282090050EC77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B0A351AE1DE282090050EC77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B0A351B11DE2820A0050EC77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B0A351B31DE2820A0050EC77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0A351B61DE2820A0050EC77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 				B0C0EAD41DF53950004686B6 /* EntryViewController.swift */,
 				B049CF671DE2D506007204E3 /* LogEntryCell.swift */,
 				B049CF691DE2D5B9007204E3 /* RapidLogViewController.swift */,
-				B0A351AE1DE282090050EC77 /* ViewController.swift */,
 				B0A351B31DE2820A0050EC77 /* Assets.xcassets */,
 				B09D69EF1DE28A39007A0B2F /* DataModels */,
 				B0A351B51DE2820A0050EC77 /* LaunchScreen.storyboard */,
@@ -321,7 +318,6 @@
 				B049CF681DE2D506007204E3 /* LogEntryCell.swift in Sources */,
 				B0C0EAD51DF53950004686B6 /* EntryViewController.swift in Sources */,
 				B09D69F71DE28B5A007A0B2F /* LogEntry.swift in Sources */,
-				B0A351AF1DE282090050EC77 /* ViewController.swift in Sources */,
 				B09D69F91DE290D2007A0B2F /* RapidLogDay.swift in Sources */,
 				B0A351AD1DE282090050EC77 /* AppDelegate.swift in Sources */,
 			);

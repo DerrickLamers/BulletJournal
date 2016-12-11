@@ -48,27 +48,28 @@ class LogEntryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        if let log = logEntry {
-            print("logEntry exists in LogEntryCell")
-            switch log.bulletType {
-            case .Task:
-                bulletImage.image = #imageLiteral(resourceName: "TaskBullet").scaleImageToSize(newSize: bulletImage.frame.size)
-            default:
-                bulletImage.image = #imageLiteral(resourceName: "TaskBullet").scaleImageToSize(newSize: bulletImage.frame.size)
-            }
-            bulletImage.contentMode = .scaleAspectFit
-            bulletImage.clipsToBounds = true
-        }
-        
+        loadBulletImage()
     }
-    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func loadBulletImage() {
+        if let log = logEntry {
+            switch log.bulletType {
+            case .Task:
+                bulletImage.image = #imageLiteral(resourceName: "TaskBullet").scaleImageToSize(newSize: bulletImage.frame.size)
+            case .Event:
+                bulletImage.image = #imageLiteral(resourceName: "EventBullet").scaleImageToSize(newSize: bulletImage.frame.size)
+            case .Information:
+                bulletImage.image = #imageLiteral(resourceName: "InfoBullet")
+            }
+            bulletImage.contentMode = .scaleAspectFit
+            bulletImage.clipsToBounds = true
+        }
     }
 
 }
