@@ -37,6 +37,7 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         textField?.delegate = self
+        textField.layer.cornerRadius = 10
         innerView.layer.cornerRadius = 10
 
         createButton.tintColor! = UIColor.clear
@@ -99,11 +100,11 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func createAction(_ sender: Any) {
         //TODO add new cell to table
-        self.performSegue(withIdentifier: "unwindFromCreateEntry", sender: nil)
+        self.performSegue(withIdentifier: "unwindCreateEntry", sender: nil)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "unwindFromCreateEntry", sender: nil)
+        self.performSegue(withIdentifier: "unwindCancelEntry", sender: nil)
     }
     
     // MARK: - Navigation
@@ -112,6 +113,11 @@ class EntryViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "unwindCreateEntry" {
+            let vc = segue.destination as? RapidLogViewController
+            let logEntry = LogEntry(note: textField.text!, bulletType: noteType, action: .InProgress, isImportant: prioritySwitch.isOn)
+            vc?.rapidLogs.append(logEntry)
+        }
     }
     
 

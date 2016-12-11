@@ -13,13 +13,12 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     var rapidLogs : [LogEntry] = []
+    var createdEntry : LogEntry?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(ciColor: .init(color: .gray))
         // add button
-//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(RapidLogViewController.insertNewCell(_:)))
-//        self.navigationItem.rightBarButtonItem = addButton
         
         // edit button
         self.navigationItem.leftBarButtonItem = self.editButtonItem
@@ -46,7 +45,10 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func unwind(segue: UIStoryboardSegue) {
-        
+        print("segue id: \(segue.identifier)")
+        print("created new entry, total: \(rapidLogs.count)")
+        tableView.reloadData()
+        saveLogEntries()
     }
  
     

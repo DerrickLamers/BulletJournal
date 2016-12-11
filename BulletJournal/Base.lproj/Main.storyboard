@@ -140,7 +140,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dbt-h7-cXE" id="pNT-CN-YIN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -170,15 +170,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyg-KI-dBi">
                                 <rect key="frame" x="51" y="93" width="272" height="284"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="bezel" placeholder="Type your note here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PmX-MV-Xyi">
-                                        <rect key="frame" x="21" y="22" width="231" height="108"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="108" id="g70-0T-9ln"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oec-kU-dhj">
                                         <rect key="frame" x="21" y="143" width="79" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -241,6 +232,17 @@
                                             <action selector="createAction:" destination="ems-nP-zYo" eventType="touchUpInside" id="YXm-dv-IJf"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="bezel" placeholder="Type your note here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PmX-MV-Xyi">
+                                        <rect key="frame" x="21" y="22" width="231" height="108"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="231" id="0tw-mu-xUc"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="108" id="f4g-ox-W1d"/>
+                                            <constraint firstAttribute="height" constant="108" id="g70-0T-9ln"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -250,16 +252,16 @@
                                     <constraint firstItem="u6E-fW-1BB" firstAttribute="centerY" secondItem="On2-1A-iiE" secondAttribute="centerY" id="7GZ-mF-blq"/>
                                     <constraint firstItem="gXw-TT-kQr" firstAttribute="leading" secondItem="u6E-fW-1BB" secondAttribute="trailing" id="7g6-0D-3MF"/>
                                     <constraint firstItem="On2-1A-iiE" firstAttribute="centerY" secondItem="Oec-kU-dhj" secondAttribute="centerY" id="88Y-of-R4A"/>
-                                    <constraint firstItem="PmX-MV-Xyi" firstAttribute="leading" secondItem="Pyg-KI-dBi" secondAttribute="leading" constant="21" id="AWv-zO-31I"/>
-                                    <constraint firstItem="PmX-MV-Xyi" firstAttribute="top" secondItem="Pyg-KI-dBi" secondAttribute="top" constant="22" id="Cch-SB-aWj"/>
+                                    <constraint firstAttribute="trailing" secondItem="PmX-MV-Xyi" secondAttribute="trailing" constant="20" id="Aae-HL-QcZ"/>
+                                    <constraint firstItem="PmX-MV-Xyi" firstAttribute="leading" secondItem="Pyg-KI-dBi" secondAttribute="leading" constant="21" id="DdN-RC-s6U"/>
                                     <constraint firstItem="NCj-0o-JdK" firstAttribute="top" secondItem="Oec-kU-dhj" secondAttribute="bottom" constant="28" id="E9E-Cm-J5Q"/>
                                     <constraint firstItem="gXw-TT-kQr" firstAttribute="centerY" secondItem="u6E-fW-1BB" secondAttribute="centerY" id="F13-t9-vkm"/>
                                     <constraint firstItem="u6E-fW-1BB" firstAttribute="leading" secondItem="On2-1A-iiE" secondAttribute="trailing" id="UKg-gI-CB2"/>
                                     <constraint firstItem="On2-1A-iiE" firstAttribute="leading" secondItem="Oec-kU-dhj" secondAttribute="trailing" constant="8" id="lYg-Ww-3Qc"/>
-                                    <constraint firstAttribute="trailing" secondItem="PmX-MV-Xyi" secondAttribute="trailing" constant="20" id="ne1-Mh-wgp"/>
                                     <constraint firstItem="AM6-rb-gzB" firstAttribute="centerY" secondItem="NCj-0o-JdK" secondAttribute="centerY" id="udC-6M-ns3"/>
                                     <constraint firstAttribute="trailing" secondItem="AM6-rb-gzB" secondAttribute="trailing" constant="47" id="vAv-ZL-Wln"/>
                                     <constraint firstItem="Oec-kU-dhj" firstAttribute="leading" secondItem="Pyg-KI-dBi" secondAttribute="leading" constant="21" id="whG-wL-lyN"/>
+                                    <constraint firstItem="PmX-MV-Xyi" firstAttribute="top" secondItem="Pyg-KI-dBi" secondAttribute="top" constant="22" id="wor-Ld-vX0"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -278,7 +280,8 @@
                         <outlet property="prioritySwitch" destination="AM6-rb-gzB" id="YUZ-jL-8kR"/>
                         <outlet property="taskButton" destination="On2-1A-iiE" id="QfM-nf-PPO"/>
                         <outlet property="textField" destination="PmX-MV-Xyi" id="4LZ-w9-zY8"/>
-                        <segue destination="svk-B1-fb9" kind="unwind" identifier="unwindFromCreateEntry" animates="NO" unwindAction="unwindWithSegue:" id="9a6-4T-C5P"/>
+                        <segue destination="svk-B1-fb9" kind="unwind" identifier="unwindCancelEntry" animates="NO" unwindAction="unwindWithSegue:" id="9a6-4T-C5P"/>
+                        <segue destination="svk-B1-fb9" kind="unwind" identifier="unwindCreateEntry" unwindAction="unwindWithSegue:" id="HJu-HB-sB6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BO9-4z-b8U" userLabel="First Responder" sceneMemberID="firstResponder"/>
