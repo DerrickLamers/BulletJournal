@@ -24,6 +24,7 @@
 		B0A351C21DE2820A0050EC77 /* BulletJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A351C11DE2820A0050EC77 /* BulletJournalTests.swift */; };
 		B0A351CD1DE2820A0050EC77 /* BulletJournalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A351CC1DE2820A0050EC77 /* BulletJournalUITests.swift */; };
 		B0C0EAD51DF53950004686B6 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C0EAD41DF53950004686B6 /* EntryViewController.swift */; };
+		B0D935BC1DFE1A4700D04089 /* LogEntryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D935BB1DFE1A4700D04089 /* LogEntryPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		B0A351CC1DE2820A0050EC77 /* BulletJournalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletJournalUITests.swift; sourceTree = "<group>"; };
 		B0A351CE1DE2820A0050EC77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0C0EAD41DF53950004686B6 /* EntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		B0D935BB1DFE1A4700D04089 /* LogEntryPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEntryPageViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,9 +156,10 @@
 				B0A351B31DE2820A0050EC77 /* Assets.xcassets */,
 				B09D69EF1DE28A39007A0B2F /* DataModels */,
 				B01365DD1DFD281000E6DCC9 /* Day */,
+				B014890A1DF575DC00CD7A83 /* Month */,
 				B0A351B51DE2820A0050EC77 /* LaunchScreen.storyboard */,
 				B0A351B01DE2820A0050EC77 /* Main.storyboard */,
-				B014890A1DF575DC00CD7A83 /* Month */,
+				B0D935BB1DFE1A4700D04089 /* LogEntryPageViewController.swift */,
 			);
 			path = BulletJournal;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				B09D69FD1DE292CA007A0B2F /* MonthOverview.swift in Sources */,
 				B049CF681DE2D506007204E3 /* LogEntryCell.swift in Sources */,
 				B0C0EAD51DF53950004686B6 /* EntryViewController.swift in Sources */,
+				B0D935BC1DFE1A4700D04089 /* LogEntryPageViewController.swift in Sources */,
 				B09D69F71DE28B5A007A0B2F /* LogEntry.swift in Sources */,
 				B01365DF1DFD28FC00E6DCC9 /* MonthViewController.swift in Sources */,
 				B09D69F91DE290D2007A0B2F /* RapidLogDay.swift in Sources */,

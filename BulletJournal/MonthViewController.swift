@@ -19,6 +19,7 @@ class MonthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // load table
         if let log = loadMonth() {
+            print("loaded month table")
             monthLog = log
             tableView.reloadData()
         } else {
@@ -44,15 +45,24 @@ class MonthViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "pageEntriesSegue" {
+            let vc = segue.destination as! LogEntryPageViewController
+            vc.monthLog = monthLog
+            vc.monthVC = self
+        } else if segue.identifier == "entriesSegue" {
+            let vc = segue.destination as! RapidLogViewController
+            vc.rapidLogDay = monthLog!.days[0]
+            vc.monthLog = self
+        }
     }
-    */
+ 
     
     // MARK: UITableViewDelegate
     

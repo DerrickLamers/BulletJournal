@@ -132,10 +132,10 @@ class EntryViewController: UIViewController {
             let vc = segue.destination as? RapidLogViewController
             let logEntry = LogEntry(note: textView.text, bulletType: noteType, action: .InProgress, isImportant: prioritySwitch.isOn)
             if let ndx = entryIndex {
-                vc?.rapidLogs[ndx] = logEntry
+                vc?.rapidLogDay?.logEntries[ndx] = logEntry
             }
             else {
-                vc?.rapidLogs.append(logEntry)
+                vc?.rapidLogDay?.logEntries.append(logEntry)
             }
         }
         entryToEdit = nil

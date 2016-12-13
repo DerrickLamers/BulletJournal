@@ -11,22 +11,26 @@ import UIKit
 class RapidLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    var rapidLogs : [LogEntry] = []
-    var createdEntry : LogEntry?
+    var monthLog : MonthViewController?
+    var pageVC : LogEntryPageViewController?
+    var rapidLogDay : RapidLogDay?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(ciColor: .init(color: .gray))
         // add button
-        
+        monthLog?.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
         // edit button
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
-        
+        //self.navigationItem.leftBarButtonItem = self.editButtonItem
+//        self.navigationItem.leftBarButtonItems = monthLog?.navigationItem.leftBarButtonItems
+//        self.navigationItem.leftBarButtonItems = pageVC?.navigationItem.leftBarButtonItems
+//        self.navigationItem.backBarButtonItem = pageVC?.navigationItem.backBarButtonItem
+        //self.navigationController?.navigationBar.backItem = pageVC?.navigationController?.navigationBar.backItem
         // Load table
-        if let tempArr = loadLogEntries() {
-            rapidLogs = tempArr
-            tableView.reloadData()
+        if let log = rapidLogDay {
+            print("able to get cell")
+//            rapidLogs = log.logEntries
+//            tableView.reloadData()
         }
     }
 
@@ -38,11 +42,11 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: Functionality
     
     func insertNewCell(_ sender: AnyObject) {
-        let ndx = rapidLogs.count
+        let ndx = rapidLogDay!.logEntries.count
         let entry : LogEntry = LogEntry(note: "Note #\(ndx+1)")
         
-        rapidLogs.append(entry)
-        saveLogEntries()
+        rapidLogDay?.logEntries.append(entry)
+        //saveLogEntries()
         tableView.reloadData()
     }
     
@@ -55,16 +59,19 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
         // Pass the selected object to the new view controller.
         if segue.identifier == "editEntrySegue" {
             let vc = segue.destination as? EntryViewController
-            vc?.entryToEdit = rapidLogs[(tableView.indexPathForSelectedRow?.row)!]
+            vc?.entryToEdit = rapidLogDay!.logEntries[(tableView.indexPathForSelectedRow?.row)!]
             vc?.entryIndex = (tableView.indexPathForSelectedRow?.row)!
         }
     }
     
     @IBAction func unwind(segue: UIStoryboardSegue) {
         print("segue id: \(segue.identifier)")
-        print("created new entry, total: \(rapidLogs.count)")
-        tableView.reloadData()
-        saveLogEntries()
+        print("created new entry, total: \(rapidLogDay!.logEntries.count)")
+        if segue.identifier == "unwindDoneEntry" {
+            tableView.reloadData()
+            //saveLogEntries()
+        }
+        
     }
  
     
@@ -74,7 +81,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "logEntryCell", for: indexPath) as? LogEntryCell
         
         // Configure the cell...
-        let logEntry = rapidLogs[indexPath.row]
+        let logEntry = rapidLogDay!.logEntries[indexPath.row]
         
         cell?.noteLable?.text = logEntry.note
         cell?.logEntry = logEntry
@@ -84,7 +91,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rapidLogs.count
+        return rapidLogDay!.logEntries.count
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -103,7 +110,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            rapidLogs.remove(at: indexPath.row)
+            rapidLogDay!.logEntries.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -112,17 +119,17 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: NSCoding
     
-    func saveLogEntries() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(rapidLogs, toFile: LogEntry.ArchiveURL.path)
-        
-        if isSuccessfulSave {
-            print("Successful save!")
-        } else {
-            print("Failed save...")
-        }
-    }
-    
-    func loadLogEntries() -> [LogEntry]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: LogEntry.ArchiveURL.path) as? [LogEntry]
-    }
+//    func saveLogEntries() {
+//        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(rapidLogDay!., toFile: LogEntry.ArchiveURL.path)
+//        
+//        if isSuccessfulSave {
+//            print("Successful save!")
+//        } else {
+//            print("Failed save...")
+//        }
+//    }
+//    
+//    func loadLogEntries() -> [LogEntry]? {
+//        return NSKeyedUnarchiver.unarchiveObject(withFile: LogEntry.ArchiveURL.path) as? [LogEntry]
+//    }
 }
