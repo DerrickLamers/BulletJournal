@@ -54,12 +54,8 @@ class MonthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Pass the selected object to the new view controller.
         if segue.identifier == "pageEntriesSegue" {
             let vc = segue.destination as! LogEntryPageViewController
-            vc.monthLog = monthLog
             vc.monthVC = self
-        } else if segue.identifier == "entriesSegue" {
-            let vc = segue.destination as! RapidLogViewController
-            vc.rapidLogDay = monthLog!.days[0]
-            vc.monthLog = self
+            vc.initialRapidLog = monthLog?.days[(tableView.indexPathForSelectedRow?.row)!]
         }
     }
  

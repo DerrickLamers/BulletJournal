@@ -102,6 +102,7 @@
 				B0C0EAD41DF53950004686B6 /* EntryViewController.swift */,
 				B049CF671DE2D506007204E3 /* LogEntryCell.swift */,
 				B049CF691DE2D5B9007204E3 /* RapidLogViewController.swift */,
+				B0D935BB1DFE1A4700D04089 /* LogEntryPageViewController.swift */,
 			);
 			name = Day;
 			sourceTree = "<group>";
@@ -159,7 +160,6 @@
 				B014890A1DF575DC00CD7A83 /* Month */,
 				B0A351B51DE2820A0050EC77 /* LaunchScreen.storyboard */,
 				B0A351B01DE2820A0050EC77 /* Main.storyboard */,
-				B0D935BB1DFE1A4700D04089 /* LogEntryPageViewController.swift */,
 			);
 			path = BulletJournal;
 			sourceTree = "<group>";

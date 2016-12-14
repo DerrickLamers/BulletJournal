@@ -11,15 +11,14 @@ import UIKit
 class RapidLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var monthLog : MonthViewController?
-    var pageVC : LogEntryPageViewController?
+    var monthVC : MonthViewController?
     var rapidLogDay : RapidLogDay?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(ciColor: .init(color: .gray))
         // add button
-        monthLog?.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        monthVC?.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
         // edit button
         //self.navigationItem.leftBarButtonItem = self.editButtonItem
 //        self.navigationItem.leftBarButtonItems = monthLog?.navigationItem.leftBarButtonItems
@@ -27,11 +26,6 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
 //        self.navigationItem.backBarButtonItem = pageVC?.navigationItem.backBarButtonItem
         //self.navigationController?.navigationBar.backItem = pageVC?.navigationController?.navigationBar.backItem
         // Load table
-        if let log = rapidLogDay {
-            print("able to get cell")
-//            rapidLogs = log.logEntries
-//            tableView.reloadData()
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +63,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
         print("created new entry, total: \(rapidLogDay!.logEntries.count)")
         if segue.identifier == "unwindDoneEntry" {
             tableView.reloadData()
-            //saveLogEntries()
+            saveLogEntries()
         }
         
     }
@@ -105,21 +99,19 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return tableView.isEditing ? .delete : .none
+        return .delete
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             rapidLogDay!.logEntries.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
     
     // MARK: NSCoding
     
-//    func saveLogEntries() {
+    func saveLogEntries() {
 //        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(rapidLogDay!., toFile: LogEntry.ArchiveURL.path)
 //        
 //        if isSuccessfulSave {
@@ -127,8 +119,9 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
 //        } else {
 //            print("Failed save...")
 //        }
-//    }
-//    
+        monthVC!.saveMonth()
+    }
+//
 //    func loadLogEntries() -> [LogEntry]? {
 //        return NSKeyedUnarchiver.unarchiveObject(withFile: LogEntry.ArchiveURL.path) as? [LogEntry]
 //    }

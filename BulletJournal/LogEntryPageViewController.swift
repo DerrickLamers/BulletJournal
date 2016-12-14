@@ -10,8 +10,9 @@ import UIKit
 
 class LogEntryPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
-    var monthLog : MonthDayLog?
     var monthVC : MonthViewController?
+    var initialRapidLog : RapidLogDay?
+    private var currentRapidLogVC : UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +20,20 @@ class LogEntryPageViewController: UIPageViewController, UIPageViewControllerData
         self.delegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewEntry(_:)))
         
-        if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController],
+        if let ndx = orderedViewControllers.index(of: currentRapidLogVC!) {
+            let vc = orderedViewControllers[ndx]
+            if let vc = vc as? RapidLogViewController {
+                let formatter = DateFormatter()
+                formatter.dateStyle = .full
+                formatter.timeStyle = .none
+                self.navigationItem.title = "\(formatter.string(from: vc.rapidLogDay!.day))"
+            }
+            setViewControllers([vc],
                                direction: .forward,
                                animated: true,
                                completion: nil)
         }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,8 +42,8 @@ class LogEntryPageViewController: UIPageViewController, UIPageViewControllerData
     }
     
     func addNewEntry(_ sender: AnyObject) {
-        if let firstVC = orderedViewControllers.first {
-            firstVC.performSegue(withIdentifier: "createEntrySegue", sender: nil)
+        if let currVC = currentRapidLogVC as? RapidLogViewController {
+            currVC.performSegue(withIdentifier: "createEntrySegue", sender: nil)
         }
     }
 
@@ -64,8 +73,14 @@ class LogEntryPageViewController: UIPageViewController, UIPageViewControllerData
         guard orderedViewControllers.count > previousIndex else {
             return nil
         }
-        self.navigationItem.title = "Index: \(previousIndex)"
-        return orderedViewControllers[previousIndex]
+        if let vc = orderedViewControllers[previousIndex] as? RapidLogViewController {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .full
+            formatter.timeStyle = .none
+            self.navigationItem.title = "\(formatter.string(from: vc.rapidLogDay!.day))"
+        }
+        self.currentRapidLogVC = orderedViewControllers[previousIndex]
+        return self.currentRapidLogVC!
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
@@ -84,8 +99,14 @@ class LogEntryPageViewController: UIPageViewController, UIPageViewControllerData
         guard orderedViewControllersCount > nextIndex else {
             return nil
         }
-        self.navigationItem.title = "Index: \(nextIndex)"
-        return orderedViewControllers[nextIndex]
+        if let vc = orderedViewControllers[nextIndex] as? RapidLogViewController {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .full
+            formatter.timeStyle = .none
+            self.navigationItem.title = "\(formatter.string(from: vc.rapidLogDay!.day))"
+        }
+        self.currentRapidLogVC = orderedViewControllers[nextIndex]
+        return self.currentRapidLogVC!
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
@@ -102,24 +123,30 @@ class LogEntryPageViewController: UIPageViewController, UIPageViewControllerData
     }
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newRapidLogVC(self.monthLog!.days[0]),
-                self.newRapidLogVC(self.monthLog!.days[1])]
+        return self.rapidLogVCs()
     }()
     
-    private func newRapidLogVC(_ rapidLog: RapidLogDay) -> UIViewController {
-//        let nav = UIStoryboard(name: "Main", bundle: nil)
-//            .instantiateViewController(withIdentifier: "RapidLogsNav") as! UINavigationController
-        let nav = monthVC!.parent as! UINavigationController
+    private func newRapidLogVC(_ rapidLog: RapidLogDay) -> RapidLogViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "RapidLogsVC") as! RapidLogViewController
         vc.rapidLogDay = rapidLog
-        vc.monthLog = monthVC
-        vc.pageVC = self
-//        nav.viewControllers.append(vc)
-        print("num vc's (before): \(nav.viewControllers.count)")
-//        nav.viewControllers.append(self)
-        print("num vc's (after): \(nav.viewControllers.count)")
+        vc.monthVC = monthVC
         return vc
+    }
+    
+    private func rapidLogVCs() -> [UIViewController] {
+        var vcs : [UIViewController] = []
+        
+        for rapidLog in monthVC!.monthLog!.days {
+            let vc = newRapidLogVC(rapidLog)
+            if rapidLog === initialRapidLog {
+                print("found initial log")
+                self.currentRapidLogVC = vc
+            }
+            vcs.append(vc)
+        }
+        
+        return vcs
     }
 
 }
