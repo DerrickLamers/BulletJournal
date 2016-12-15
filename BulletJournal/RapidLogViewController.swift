@@ -11,6 +11,7 @@ import UIKit
 class RapidLogViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    var pageVC :LogEntryPageViewController?
     var monthVC : MonthViewController?
     var rapidLogDay : RapidLogDay?
 
@@ -18,7 +19,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         view.backgroundColor = UIColor(ciColor: .init(color: .gray))
         // add button
-        monthVC?.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+//        monthVC?.parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
         // edit button
         //self.navigationItem.leftBarButtonItem = self.editButtonItem
 //        self.navigationItem.leftBarButtonItems = monthLog?.navigationItem.leftBarButtonItems
@@ -45,6 +46,53 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
 
+    @IBAction func swipeLeft(_ sender: Any) {
+        // turn to next page if there is one
+        guard let ndx = pageVC?.orderedViewControllers.index(of: pageVC!.currentRapidLogVC!) else {
+            return
+        }
+
+        let nextNdx = ndx + 1
+
+        guard nextNdx <= pageVC!.orderedViewControllers.count  else {
+            return
+        }
+        
+        let vc = pageVC!.orderedViewControllers[nextNdx]
+        if let vc = vc as? RapidLogViewController {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .full
+            formatter.timeStyle = .none
+            pageVC!.navigationItem.title = "\(formatter.string(from: vc.rapidLogDay!.day))"
+        }
+        pageVC!.currentRapidLogVC = vc
+        pageVC!.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
+
+    }
+
+    @IBAction func swipeRight(_ sender: Any) {
+        // turn to prev page if there is one
+        guard let ndx = pageVC?.orderedViewControllers.index(of: pageVC!.currentRapidLogVC!) else {
+            return
+        }
+        
+        let nextNdx = ndx - 1
+        
+        guard nextNdx >= 0 else {
+            return
+        }
+        
+        let vc = pageVC!.orderedViewControllers[nextNdx]
+        if let vc = vc as? RapidLogViewController {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .full
+            formatter.timeStyle = .none
+            pageVC!.navigationItem.title = "\(formatter.string(from: vc.rapidLogDay!.day))"
+        }
+        pageVC!.currentRapidLogVC = vc
+        pageVC!.setViewControllers([vc], direction: .reverse, animated: true, completion: nil)
+
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -91,7 +139,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         // Toggles the actual editing actions appearing on a table view
-        tableView.setEditing(editing, animated: true)
+        tableView.setEditing(true, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool{
