@@ -13,7 +13,6 @@ class LogEntryPageViewController: UIPageViewController {
     var monthVC : MonthViewController?
     var initialRapidLog : RapidLogDay?
     var currentRapidLogVC : UIViewController?
-    private var oldTitle : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

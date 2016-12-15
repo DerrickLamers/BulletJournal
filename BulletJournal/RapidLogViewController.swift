@@ -109,7 +109,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func unwind(segue: UIStoryboardSegue) {
         print("segue id: \(segue.identifier)")
         print("created new entry, total: \(rapidLogDay!.logEntries.count)")
-        if segue.identifier == "unwindDoneEntry" {
+        if segue.identifier == "unwindDoneEntry" || segue.identifier == "unwindDeleteEntry" {
             tableView.reloadData()
             saveLogEntries()
         }

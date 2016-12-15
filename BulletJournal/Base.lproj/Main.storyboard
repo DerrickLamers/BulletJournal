@@ -280,8 +280,19 @@
                                             <action selector="taskButtonAction:" destination="ems-nP-zYo" eventType="touchUpInside" id="u43-Wf-YbF"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nkM-Tf-Tlo">
+                                        <rect key="frame" x="26" y="25" width="221" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="221" id="GkF-rp-T9v"/>
+                                            <constraint firstAttribute="height" constant="100" id="gee-hR-K2e"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.92941176469999998" green="0.94901960780000005" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxF-P6-5gt">
-                                        <rect key="frame" x="81" y="232" width="56" height="30"/>
+                                        <rect key="frame" x="49" y="232" width="56" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="0.80392156859999997" green="0.81568627449999997" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -291,7 +302,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9O-iy-Lga">
-                                        <rect key="frame" x="145" y="232" width="46" height="30"/>
+                                        <rect key="frame" x="113" y="232" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Done">
                                             <color key="titleColor" red="0.80392156859999997" green="0.81568627449999997" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -300,17 +311,16 @@
                                             <action selector="createAction:" destination="ems-nP-zYo" eventType="touchUpInside" id="YXm-dv-IJf"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nkM-Tf-Tlo">
-                                        <rect key="frame" x="26" y="12" width="221" height="118"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="221" id="GkF-rp-T9v"/>
-                                            <constraint firstAttribute="height" constant="118" id="gee-hR-K2e"/>
-                                        </constraints>
-                                        <color key="textColor" red="0.92941176469999998" green="0.94901960780000005" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhw-uH-Eza">
+                                        <rect key="frame" x="167" y="232" width="54" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Delete">
+                                            <color key="titleColor" red="0.80392156859999997" green="0.81568627449999997" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteAction:" destination="ems-nP-zYo" eventType="touchUpInside" id="hBn-J5-Eqi"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -319,7 +329,7 @@
                                     <constraint firstItem="NCj-0o-JdK" firstAttribute="leading" secondItem="Pyg-KI-dBi" secondAttribute="leading" constant="21" id="74A-ef-5Be"/>
                                     <constraint firstItem="u6E-fW-1BB" firstAttribute="centerY" secondItem="On2-1A-iiE" secondAttribute="centerY" id="7GZ-mF-blq"/>
                                     <constraint firstItem="gXw-TT-kQr" firstAttribute="leading" secondItem="u6E-fW-1BB" secondAttribute="trailing" id="7g6-0D-3MF"/>
-                                    <constraint firstItem="nkM-Tf-Tlo" firstAttribute="top" secondItem="Pyg-KI-dBi" secondAttribute="top" constant="12" id="7s7-66-EnZ"/>
+                                    <constraint firstItem="nkM-Tf-Tlo" firstAttribute="top" secondItem="Pyg-KI-dBi" secondAttribute="top" constant="25" id="7s7-66-EnZ"/>
                                     <constraint firstItem="On2-1A-iiE" firstAttribute="centerY" secondItem="Oec-kU-dhj" secondAttribute="centerY" id="88Y-of-R4A"/>
                                     <constraint firstItem="NCj-0o-JdK" firstAttribute="top" secondItem="Oec-kU-dhj" secondAttribute="bottom" constant="28" id="E9E-Cm-J5Q"/>
                                     <constraint firstItem="gXw-TT-kQr" firstAttribute="centerY" secondItem="u6E-fW-1BB" secondAttribute="centerY" id="F13-t9-vkm"/>
@@ -331,6 +341,12 @@
                                     <constraint firstItem="Oec-kU-dhj" firstAttribute="leading" secondItem="Pyg-KI-dBi" secondAttribute="leading" constant="21" id="whG-wL-lyN"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ng2-c7-AcV">
+                                <rect key="frame" x="78" y="489" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Dly-2r-nkD" firstAttribute="top" secondItem="Pyg-KI-dBi" secondAttribute="bottom" constant="290" id="2l8-mp-r0e"/>
@@ -341,6 +357,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="mxF-P6-5gt" id="YAN-aJ-5Va"/>
                         <outlet property="createButton" destination="F9O-iy-Lga" id="rnJ-O8-rql"/>
+                        <outlet property="deleteButton" destination="jhw-uH-Eza" id="GEE-Tq-OPr"/>
                         <outlet property="eventButton" destination="u6E-fW-1BB" id="GmX-6G-Szt"/>
                         <outlet property="infoButton" destination="gXw-TT-kQr" id="gz1-hA-5Ic"/>
                         <outlet property="innerView" destination="Pyg-KI-dBi" id="u2d-Zw-CK9"/>
@@ -349,6 +366,7 @@
                         <outlet property="textView" destination="nkM-Tf-Tlo" id="JGa-gD-OcH"/>
                         <segue destination="svk-B1-fb9" kind="unwind" identifier="unwindCancelEntry" animates="NO" unwindAction="unwindWithSegue:" id="9a6-4T-C5P"/>
                         <segue destination="svk-B1-fb9" kind="unwind" identifier="unwindDoneEntry" animates="NO" unwindAction="unwindWithSegue:" id="HJu-HB-sB6"/>
+                        <segue destination="svk-B1-fb9" kind="unwind" identifier="unwindDeleteEntry" animates="NO" unwindAction="unwindWithSegue:" id="5Gd-Tx-5a7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BO9-4z-b8U" userLabel="First Responder" sceneMemberID="firstResponder"/>

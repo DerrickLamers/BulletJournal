@@ -29,6 +29,7 @@ class EntryViewController: UIViewController {
     @IBOutlet weak var prioritySwitch: UISwitch!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var radioButtons : [(BulletType, UIButton)] = []
     var noteType : BulletType = .Task
@@ -122,6 +123,9 @@ class EntryViewController: UIViewController {
         self.performSegue(withIdentifier: "unwindCancelEntry", sender: nil)
     }
     
+    @IBAction func deleteAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "unwindDeleteEntry", sender: nil)
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -136,6 +140,11 @@ class EntryViewController: UIViewController {
             }
             else {
                 vc?.rapidLogDay?.logEntries.append(logEntry)
+            }
+        } else if segue.identifier == "unwindDeleteEntry" {
+            let vc = segue.destination as! RapidLogViewController
+            if let ndx = entryIndex {
+                vc.rapidLogDay?.logEntries.remove(at: ndx)
             }
         }
         entryToEdit = nil
