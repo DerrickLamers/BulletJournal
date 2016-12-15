@@ -15,23 +15,31 @@ class RapidLogDay: NSObject, NSCoding {
         static let dayKey = "day"
     }
     var logEntries : [LogEntry] = []
-    var importantEntries : [LogEntry] = []
     let day : Date
     
     init(day : Date) {
         self.day = day
     }
     
+    func getImportantEntries() -> [LogEntry] {
+        var importantEntries : [LogEntry] = []
+        
+        for log in logEntries {
+            if log.isImportant {
+                importantEntries.append(log)
+            }
+        }
+        return importantEntries
+    }
+    
     // MARK: NSCoding
     func encode(with aCoder: NSCoder) {
         aCoder.encode(logEntries, forKey: RapidLogDayKey.logsKey)
-        aCoder.encode(importantEntries, forKey: RapidLogDayKey.importantLogsKey)
         aCoder.encode(day, forKey: RapidLogDayKey.dayKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         self.init(day: aDecoder.decodeObject(forKey: RapidLogDayKey.dayKey) as! Date)
         self.logEntries = aDecoder.decodeObject(forKey: RapidLogDayKey.logsKey) as! [LogEntry]
-        self.importantEntries = aDecoder.decodeObject(forKey: RapidLogDayKey.importantLogsKey) as! [LogEntry]
     }
 }

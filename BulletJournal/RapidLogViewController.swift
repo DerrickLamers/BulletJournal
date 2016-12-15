@@ -27,6 +27,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
 //        self.navigationItem.backBarButtonItem = pageVC?.navigationItem.backBarButtonItem
         //self.navigationController?.navigationBar.backItem = pageVC?.navigationController?.navigationBar.backItem
         // Load table
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,9 +126,8 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
         // Configure the cell...
         let logEntry = rapidLogDay!.logEntries[indexPath.row]
         
-        cell?.noteLable?.text = logEntry.note
         cell?.logEntry = logEntry
-        cell?.loadBulletImage()
+        cell?.loadCell()
         
         return cell!
     }
@@ -160,17 +160,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
     // MARK: NSCoding
     
     func saveLogEntries() {
-//        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(rapidLogDay!., toFile: LogEntry.ArchiveURL.path)
-//        
-//        if isSuccessfulSave {
-//            print("Successful save!")
-//        } else {
-//            print("Failed save...")
-//        }
         monthVC!.saveMonth()
     }
-//
-//    func loadLogEntries() -> [LogEntry]? {
-//        return NSKeyedUnarchiver.unarchiveObject(withFile: LogEntry.ArchiveURL.path) as? [LogEntry]
-//    }
+    
 }

@@ -56,7 +56,7 @@ class MonthViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let vc = segue.destination as! LogEntryPageViewController
             vc.monthVC = self
             vc.initialRapidLog = monthLog?.days[(tableView.indexPathForSelectedRow?.row)!]
-//            self.parent!.navigationItem.backBarButtonItem!.title = "December"
+
 //            let backItem = UIBarButtonItem()
 //            backItem.title = "December"
 //            self.parent!.navigationItem.backBarButtonItem = backItem

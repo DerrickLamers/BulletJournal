@@ -38,6 +38,11 @@ class LogEntryPageViewController: UIPageViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        print("pageVC will disappear")
+        monthVC?.tableView.reloadData()
+    }
+    
     func addNewEntry(_ sender: AnyObject) {
         if let currVC = currentRapidLogVC as? RapidLogViewController {
             currVC.performSegue(withIdentifier: "createEntrySegue", sender: nil)

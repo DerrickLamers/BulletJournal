@@ -41,14 +41,17 @@ extension UIImage {
 
 class LogEntryCell: UITableViewCell {
 
-    @IBOutlet weak var noteLable: UILabel!
+    @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var bulletImage: UIImageView!
-    @IBOutlet weak var isImportantImage: UIImageView!
+    //@IBOutlet weak var isImportantImage: UIImageView!
+    @IBOutlet weak var starText: UITextField!
+    
     var logEntry : LogEntry?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        loadBulletImage()
+        noteLabel.text = ""
+        loadCell()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -57,7 +60,7 @@ class LogEntryCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func loadBulletImage() {
+    func loadCell() {
         if let log = logEntry {
             switch log.bulletType {
             case .Task:
@@ -69,6 +72,10 @@ class LogEntryCell: UITableViewCell {
             }
             bulletImage.contentMode = .scaleAspectFit
             bulletImage.clipsToBounds = true
+            noteLabel.text = log.note
+            log.isImportant ? (starText.textColor = UIColor.yellow) :
+                (starText.textColor = UIColor.black)
+            
         }
     }
 
