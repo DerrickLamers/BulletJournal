@@ -341,12 +341,6 @@
                                     <constraint firstItem="Oec-kU-dhj" firstAttribute="leading" secondItem="Pyg-KI-dBi" secondAttribute="leading" constant="21" id="whG-wL-lyN"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ng2-c7-AcV">
-                                <rect key="frame" x="78" y="489" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Dly-2r-nkD" firstAttribute="top" secondItem="Pyg-KI-dBi" secondAttribute="bottom" constant="290" id="2l8-mp-r0e"/>
