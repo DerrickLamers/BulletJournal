@@ -40,6 +40,8 @@ class RapidLogDayCell: UITableViewCell {
             for log in day.getImportantEntries() {
                 taskLabel.text?.append(log.note + " ")
             }
+            
+            
         }
     }
 

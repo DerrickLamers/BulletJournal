@@ -13,30 +13,11 @@ class MonthViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
     var monthLog : MonthDayLog?
+    var monthPageVC : MonthPageViewController?
+    var monthOverview : MonthOverviewTableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // load table
-        if let log = loadMonth() {
-            print("loaded month table")
-            monthLog = log
-            tableView.reloadData()
-        } else {
-            let month = Calendar.current.date(from: DateComponents(year: 2016, month:12))!
-            let range = Calendar.current.range(of: .day, in: .month, for: month)!
-            var days : [RapidLogDay] = []
-            
-            for day in 1...range.count {
-                let yearNum = Calendar.current.component(.year, from: month)
-                let monthNum = Calendar.current.component(.month, from: month)
-                let dayDate = Calendar.current.date(from: DateComponents(year: yearNum, month: monthNum, day: day))!
-                days.append(RapidLogDay(day: dayDate))
-            }
-            monthLog = MonthDayLog(month: month)
-            monthLog?.days = days
-            saveMonth()
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,8 +25,58 @@ class MonthViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func swipeLeft(_ sender: Any) {
+        // turn to next page if there is one
+        guard let ndx = monthPageVC?.orderedViewControllers.index(of: monthPageVC!.currMonthDayVC!) else {
+            return
+        }
+        
+        let nextNdx = ndx + 1
+        
+        guard nextNdx < monthPageVC!.orderedViewControllers.count  else {
+            return
+        }
+        
+        let vc = monthPageVC!.orderedViewControllers[nextNdx]
+        if let vc = vc as? MonthViewController {
+            let monthNum = Calendar.current.component(.month, from: vc.monthLog!.month)
+            let formatter = DateFormatter()
+            let months = formatter.monthSymbols!
+            let monthName = months[monthNum-1] as String
+            let year = Calendar.current.component(.year, from: vc.monthLog!.month)
+            
+            monthPageVC!.navigationItem.title = monthName + " \(year)"
+        }
+        monthPageVC!.currMonthDayVC = vc
+        monthPageVC!.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
+    }
     
+    @IBAction func swipeRight(_ sender: Any) {
+        // turn to next page if there is one
+        guard let ndx = monthPageVC?.orderedViewControllers.index(of: monthPageVC!.currMonthDayVC!) else {
+            return
+        }
+        
+        let nextNdx = ndx - 1
+        
+        guard nextNdx >= 0  else {
+            return
+        }
+        
+        let vc = monthPageVC!.orderedViewControllers[nextNdx]
+        if let vc = vc as? MonthViewController {
+            let monthNum = Calendar.current.component(.month, from: vc.monthLog!.month)
+            let formatter = DateFormatter()
+            let months = formatter.monthSymbols!
+            let monthName = months[monthNum-1] as String
+            let year = Calendar.current.component(.year, from: vc.monthLog!.month)
+            
+            monthPageVC!.navigationItem.title = monthName + " \(year)"
+        }
+        monthPageVC!.currMonthDayVC = vc
+        monthPageVC!.setViewControllers([vc], direction: .reverse, animated: true, completion: nil)
+    }
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -85,16 +116,6 @@ class MonthViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // MARK: NSCoding
     
     func saveMonth() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(monthLog!, toFile: MonthDayLog.ArchiveURL.path)
-        
-        if isSuccessfulSave {
-            print("Successful save!")
-        } else {
-            print("Failed save...")
-        }
-    }
-    
-    func loadMonth() -> MonthDayLog? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: MonthDayLog.ArchiveURL.path) as? MonthDayLog
+        monthOverview?.saveOverview()
     }
 }

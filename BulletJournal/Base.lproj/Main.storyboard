@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uz2-jn-0yy" id="lNi-s6-uZr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAX-hn-3vf">
@@ -43,6 +43,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="monthYearLabel" destination="DAX-hn-3vf" id="mFP-jZ-9f8"/>
+                                    <segue destination="JPN-kA-OjV" kind="show" identifier="monthViewSegue" id="7BC-HR-nK1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -59,13 +60,13 @@
             </objects>
             <point key="canvasLocation" x="-2180" y="-1535"/>
         </scene>
-        <!--Page View Controller-->
+        <!--Month Page View Controller-->
         <scene sceneID="UcI-TE-bSw">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="JPN-kA-OjV" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="JPN-kA-OjV" customClass="MonthPageViewController" customModule="BulletJournal" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vBw-9g-RCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1402" y="-1481"/>
+            <point key="canvasLocation" x="-1454" y="-1535"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6h7-zf-sgh">
@@ -76,13 +77,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ntU-AW-KcR" kind="show" id="3l1-V2-SRv"/>
                         <segue destination="eUD-lK-J0Z" kind="relationship" relationship="rootViewController" id="GvH-dV-3Hi"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUe-WX-KK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2532" y="-843"/>
+            <point key="canvasLocation" x="-2985" y="-1535"/>
         </scene>
         <!--Rapid Log View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -203,7 +203,7 @@
         <!--December-->
         <scene sceneID="OYO-LO-Fll">
             <objects>
-                <viewController id="ntU-AW-KcR" customClass="MonthViewController" customModule="BulletJournal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MonthDayVC" id="ntU-AW-KcR" customClass="MonthViewController" customModule="BulletJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kTj-IZ-VGs"/>
                         <viewControllerLayoutGuide type="bottom" id="T8z-Lq-YvK"/>
@@ -271,6 +271,11 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Lzc-Kd-SLH" appends="YES" id="yGl-dq-62n"/>
+                            <outletCollection property="gestureRecognizers" destination="jlu-lP-qgA" appends="YES" id="EGA-d7-fjD"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="December" id="QmM-7o-cYw">
                         <barButtonItem key="backBarButtonItem" title="Dec" id="Ozt-2j-4y2"/>
@@ -281,6 +286,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqg-6g-Y4i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Lzc-Kd-SLH">
+                    <connections>
+                        <action selector="swipeRight:" destination="ntU-AW-KcR" id="QcU-uF-Nin"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="jlu-lP-qgA">
+                    <connections>
+                        <action selector="swipeLeft:" destination="ntU-AW-KcR" id="B3Y-Bh-zxK"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1402" y="-843"/>
         </scene>
@@ -443,6 +458,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VFj-OO-iWp"/>
+        <segue reference="t1T-HP-vwW"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -55,7 +55,7 @@ class RapidLogViewController: UIViewController, UITableViewDelegate, UITableView
 
         let nextNdx = ndx + 1
 
-        guard nextNdx <= pageVC!.orderedViewControllers.count  else {
+        guard nextNdx < pageVC!.orderedViewControllers.count  else {
             return
         }
         
